@@ -1,6 +1,7 @@
 <script setup>
 import LNav from "../components/LNav.vue";
 import { ref } from "vue";
+import { useStore } from "@/stores/counter";
 const numberFormatter = (n) => {
   return (n < 10 ? "0" : "") + n;
 };
@@ -9,6 +10,8 @@ const isLeftToggleActive = ref(false);
 const onLeftToggleClick = () => {
   isLeftToggleActive.value = !isLeftToggleActive.value;
 };
+
+const store = useStore();
 </script>
 
 <template>

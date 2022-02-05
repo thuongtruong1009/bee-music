@@ -1,6 +1,6 @@
 {
     "name": "bee-music",
-    "version": "0.0.0",
+    "version": "1.0.0",
     "scripts": {
         "dev": "vite --port 3000 --open",
         "build": "vue-tsc --noEmit && vite build",

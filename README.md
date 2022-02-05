@@ -1,5 +1,7 @@
 <h1 align="center">bee music 🎵</h1>
 
+![demo](/public/demo_main.jpg)
+
 This template should help get you started developing with Vue 3 in Vite.
 
 ## Recommended IDE Setup

@@ -53,6 +53,9 @@ npm run test:unit
 npm run lint
 ```
 
+## Plugin
++ [Pinia for vue](https://github.com/vuejs/pinia)
+
 ## Reference
 + inspiration: [bee-music](https://dribbble.com/shots/16618273-Bee-Music-Music-Media-Player-Dashboard?fbclid=IwAR35hkSSs2dB2Ek66GAX-yPDfx3JYxxJgeQdwweuEiEtne02IUYk13kxDnk)
 + progress at [latest project updated](https://github.com/thuongtruong1009/bee-music/projects)

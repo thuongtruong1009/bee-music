@@ -1,7 +1,8 @@
 <script setup>
 import LNav from "../components/LNav.vue";
 import { ref } from "vue";
-import { useStore } from "@/stores/counter";
+import { useStore } from "@/store/index.ts";
+import { storeToRefs } from "pinia";
 const numberFormatter = (n) => {
   return (n < 10 ? "0" : "") + n;
 };
@@ -11,7 +12,8 @@ const onLeftToggleClick = () => {
   isLeftToggleActive.value = !isLeftToggleActive.value;
 };
 
-const store = useStore();
+const main = useStore();
+const { counter, doubleCount } = storeToRefs(main);
 </script>
 
 <template>
@@ -109,7 +111,7 @@ const store = useStore();
         <p class="-mr-30">{{ numberFormatter(i) }}</p>
         <p>Artics name</p>
         <p>name song {{ i }}</p>
-        <p>3:01</p>
+        <p>{{ main.name }}</p>
       </div>
     </div>
 

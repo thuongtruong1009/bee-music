@@ -1,0 +1,34 @@
+{
+    "name": "bee-music",
+    "version": "0.0.0",
+    "scripts": {
+        "dev": "vite --port 3000 --open",
+        "build": "vue-tsc --noEmit && vite build",
+        "preview": "vite preview --port 5050",
+        "test:unit": "vitest --environment jsdom",
+        "typecheck": "vue-tsc --noEmit",
+        "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
+    },
+    "dependencies": {
+        "vue": "^3.2.27",
+        "vue-router": "^4.0.12"
+    },
+    "devDependencies": {
+        "@rushstack/eslint-patch": "^1.1.0",
+        "@types/node": "^16.11.21",
+        "@vitejs/plugin-vue": "^2.0.1",
+        "@vue/eslint-config-prettier": "^7.0.0",
+        "@vue/eslint-config-typescript": "^10.0.0",
+        "@vue/test-utils": "^2.0.0-rc.18",
+        "eslint": "^8.5.0",
+        "eslint-plugin-vue": "^8.2.0",
+        "jsdom": "^19.0.0",
+        "prettier": "^2.5.1",
+        "typescript": "~4.5.4",
+        "vite": "^2.7.13",
+        "vite-plugin-windicss": "^1.6.3",
+        "vitest": "^0.1.23",
+        "vue-tsc": "^0.29.8",
+        "windicss": "^3.4.3"
+    }
+}

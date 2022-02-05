@@ -191,11 +191,8 @@ i {
   background: black;
 }
 @media (max-width: 800px) {
-  .left-nav-container {
-    /* overflow: hidden; */
-  }
   li {
-    font-size: 0.5rem;
+    font-size: 0.75rem;
   }
 }
 </style>

@@ -190,4 +190,12 @@ i {
 .navbar-content li:hover::after {
   background: black;
 }
+@media (max-width: 800px) {
+  .left-nav-container {
+    /* overflow: hidden; */
+  }
+  li {
+    font-size: 0.5rem;
+  }
+}
 </style>

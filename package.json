@@ -1,6 +1,9 @@
 {
     "name": "bee-music",
     "version": "1.0.0",
+    "author": "https://github.com/thuongtruong1009/bee-music",
+    "description": "Enjoy relaxing tunes after stressful working hours.",
+    "license": "MIT",
     "scripts": {
         "dev": "vite --port 3000 --open",
         "build": "vue-tsc --noEmit && vite build",

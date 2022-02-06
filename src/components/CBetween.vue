@@ -165,7 +165,7 @@ i {
   margin: 0 0.2rem;
 }
 
-/* @media (max-width: 800px) {
+@media (max-width: 800px) {
   .between-container {
     border-radius: 1rem;
   }
@@ -189,5 +189,5 @@ i {
   .fa-arrow-right {
     font-size: 1.4rem;
   }
-} */
+}
 </style>

@@ -1,6 +1,6 @@
 <script setup>
 import CLeft from "../components/CLeft.vue";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { useCounterStore } from "../stores/counter";
 import { storeToRefs } from "pinia";
 const numberFormatter = (n) => {
@@ -14,6 +14,14 @@ const onLeftToggleClick = () => {
 
 const main = useCounterStore();
 const { counter } = storeToRefs(main);
+
+// const slider = document.getElementById("myRange2");
+// const output = document.getElementById("demo2");
+// output.innerHTML = slider.value;
+
+// slider.oninput = function () {
+//   output.innerHTML = this.value;
+// };
 </script>
 
 <template>
@@ -122,7 +130,7 @@ const { counter } = storeToRefs(main);
           <i class="fas fa-music"></i>
           <i class="fas fa-expand-alt"></i>
         </div>
-        <div class="play-control__main flex items-center">
+        <div class="play-control__main flex items-center flex items-center cursor-pointer">
           <i class="fas fa-redo-alt play-repeat text-gray-500"></i>
           <i class="fas fa-fast-backward play-backward main-icon"></i>
           <!-- <i class="fas fa-pause-circle pause-icon main-icon main-icon--big"></i> -->
@@ -136,14 +144,37 @@ const { counter } = storeToRefs(main);
         </div>
         <div class="play-control__volume flex items-center">
           <i class="fas fa-volume-down text-gray-500"></i>
-          <input type="range" id="volume" class="volume" />
-
+          <div class="slidecontainer1 relative">
+            <span
+              class="w-full h-0.5 bg-gray-500 absolute top-1/2 left-0"
+            ></span>
+            <input
+              type="range"
+              min="1"
+              max="100"
+              value="50"
+              class="slider1"
+              id="myRange1"
+            />
+          </div>
           <i class="fas fa-volume-up text-gray-500"></i>
         </div>
       </div>
       <div class="play-seekbar flex justify-between items-center">
-        <div class="timer__left text-gray-500">0:00</div>
-        <input type="range" name="range" id="range" class="range" />
+        <div class="timer__left text-gray-500" id="demo2">0:00</div>
+        <div class="slidecontainer2 relative">
+          <span
+            class="w-full h-0.75 bg-gray-500 absolute top-1/2 left-0"
+          ></span>
+          <input
+            type="range"
+            min="1"
+            max="100"
+            value="0"
+            class="slider2"
+            id="myRange2"
+          />
+        </div>
         <audio src="/mp3/ntt.mp3" id="song"></audio>
         <div class="timer__right text-gray-500">3.00</div>
       </div>
@@ -164,6 +195,75 @@ const { counter } = storeToRefs(main);
 i {
   margin: 0 0.2rem;
 }
+/* **************************************************** */
+.slidecontainer2 {
+  width: 80%;
+  height: 1.5rem;
+}
+
+.slider2 {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.slider2::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.4rem;
+  height: 1.4rem;
+  border: 0;
+  background: url("https://img.icons8.com/external-flatart-icons-lineal-color-flatarticons/25/000000/external-right-arrow-arrow-flatart-icons-lineal-color-flatarticons-4.png");
+  cursor: pointer;
+}
+
+.slider2::-moz-range-thumb {
+  width: 1.4rem;
+  height: 1.4rem;
+  border: 0;
+  background: url("https://img.icons8.com/external-flatart-icons-lineal-color-flatarticons/25/000000/external-right-arrow-arrow-flatart-icons-lineal-color-flatarticons-4.png");
+  cursor: pointer;
+}
+/* ****************************************************** */
+.slidecontainer1 {
+  width: 80%;
+  height: 1.5rem;
+}
+
+.slider1 {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+
+.slider1::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1.4rem;
+  height: 1.4rem;
+  border: 0;
+  background: url("https://img.icons8.com/material-two-tone/24/000000/circled.png");
+  cursor: pointer;
+  transform: scale(0.6);
+}
+
+.slider1::-moz-range-thumb {
+  width: 1.4rem;
+  height: 1.4rem;
+  border: 0;
+  background: url("https://img.icons8.com/material-two-tone/24/000000/circled.png");
+  cursor: pointer;
+  transform: scale(0.6);
+}
+/* ****************************************************** */
 
 @media (max-width: 800px) {
   .between-container {

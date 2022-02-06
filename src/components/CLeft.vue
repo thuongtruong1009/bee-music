@@ -178,7 +178,7 @@ i {
   border-radius: 0.75rem;
   cursor: pointer;
 }
-.navbar-content li:after {
+.navbar-content li::after {
   content: "";
   position: absolute;
   background: transparent;
@@ -189,5 +189,10 @@ i {
 }
 .navbar-content li:hover::after {
   background: black;
+}
+@media (max-width: 800px) {
+  li {
+    font-size: 0.75rem;
+  }
 }
 </style>

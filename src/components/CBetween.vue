@@ -1,13 +1,32 @@
 <script setup>
+import LNav from "../components/LNav.vue";
+import { ref } from "vue";
+import { useStore } from "@/store/index.ts";
+import { storeToRefs } from "pinia";
 const numberFormatter = (n) => {
   return (n < 10 ? "0" : "") + n;
 };
+
+const isLeftToggleActive = ref(false);
+const onLeftToggleClick = () => {
+  isLeftToggleActive.value = !isLeftToggleActive.value;
+};
+
+const main = useStore();
+const { counter, doubleCount } = storeToRefs(main);
 </script>
 
 <template>
-  <div class="between-container">
+  <div class="between-container absolute">
+    <LNav
+      class="absolute h-full w-58 bg-white z-10 top-0 left-0"
+      v-if="isLeftToggleActive === true"
+    />
     <header class="flex justify-between items-center text-gray-500">
-      <i class="fas fa-bars text-2xl px-2 hidden"></i>
+      <i
+        class="fas fa-bars text-2xl px-2 hidden"
+        @click="onLeftToggleClick"
+      ></i>
       <i class="fas fa-arrow-left px-2 cursor-pointer hover:text-black"></i>
       <i class="fas fa-arrow-right px-4 cursor-pointer hover:text-black"></i>
 
@@ -21,7 +40,7 @@ const numberFormatter = (n) => {
           placeholder="Search for artist, songs....."
         />
       </div>
-       <i class="fas fa-bars text-2xl px-4 hidden"></i>
+      <i class="fas fa-bars text-2xl px-4 hidden"></i>
     </header>
 
     <div class="pt-4 pb-1">
@@ -92,7 +111,7 @@ const numberFormatter = (n) => {
         <p class="-mr-30">{{ numberFormatter(i) }}</p>
         <p>Artics name</p>
         <p>name song {{ i }}</p>
-        <p>3:01</p>
+        <p>{{ main.name }}</p>
       </div>
     </div>
 
@@ -147,11 +166,11 @@ i {
 }
 
 @media (max-width: 800px) {
-  .between-container{
+  .between-container {
     border-radius: 1rem;
   }
   .main-content__trend-more,
-  .playlist-more{
+  .playlist-more {
     background: black;
     color: white;
     padding: 0.1rem 0.5rem;

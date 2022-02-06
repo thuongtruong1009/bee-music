@@ -190,4 +190,9 @@ i {
 .navbar-content li:hover::after {
   background: black;
 }
+@media (max-width: 800px) {
+  li {
+    font-size: 0.75rem;
+  }
+}
 </style>

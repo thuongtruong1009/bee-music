@@ -20,7 +20,7 @@ import CRight from "@/components/CRight.vue";
   .right {
     display: none;
   }
-  main{
+  main {
     grid-template-columns: 0 1fr 0;
     border-radius: 1rem;
   }

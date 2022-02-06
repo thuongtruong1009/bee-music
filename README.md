@@ -1,5 +1,7 @@
 <h1 align="center">bee music 🎵</h1>
 
+[View demo](https://bee-music.netlify.app/)
+
 ![demo](/public/demo_main.jpg)
 
 This template should help get you started developing with Vue 3 in Vite.
@@ -60,3 +62,4 @@ npm run lint
 ## Reference
 + inspiration: [bee-music](https://dribbble.com/shots/16618273-Bee-Music-Music-Media-Player-Dashboard?fbclid=IwAR35hkSSs2dB2Ek66GAX-yPDfx3JYxxJgeQdwweuEiEtne02IUYk13kxDnk)
 + progress at [latest project updated](https://github.com/thuongtruong1009/bee-music/projects)
++ implicity module error fixes [here](https://pjausovec.medium.com/how-to-fix-error-ts7016-could-not-find-a-declaration-file-for-module-xyz-has-an-any-type-ecab588800a8)

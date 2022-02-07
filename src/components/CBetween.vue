@@ -26,7 +26,10 @@ const isPlaying = ref(false);
 const onPlaySong = () => {
   isPlaying.value = !isPlaying.value;
 };
-
+const isHeart = ref(false);
+const onHeart = () => {
+  isHeart.value = !isHeart.value;
+};
 const currentTime = ref(0);
 const currentVolume = ref(30);
 </script>
@@ -124,8 +127,8 @@ const currentVolume = ref(30);
         class="flex justify-between items-center pr-3 py-3 hover:(pl-2 pr-5 bg-white) duration-200 rounded-md cursor-pointer text-gray-500 text-xs"
       >
         <p class="-mr-30">{{ numberFormatter(i) }}</p>
-        <p>Artics name</p>
         <p>name song {{ i }}</p>
+        <p>artics name {{ i }}</p>
         <p>{{ main.counter }}</p>
       </div>
     </div>
@@ -135,7 +138,16 @@ const currentVolume = ref(30);
         <div
           class="play-control__act flex justify-between items-center text-gray-500 w-[18%]"
         >
-          <i class="far fa-heart" id="heart"></i>
+          <i
+            class="far fa-heart"
+            @click="onHeart"
+            v-show="isHeart === false"
+          ></i>
+          <i
+            class="fas fa-heart text-red-600"
+            @click="onHeart"
+            v-show="isHeart === true"
+          ></i>
           <i class="fas fa-music"></i>
           <i class="fas fa-expand-alt"></i>
         </div>
@@ -212,9 +224,12 @@ const currentVolume = ref(30);
 i {
   margin: 0 0.2rem;
 }
+.play-control i {
+  cursor: pointer;
+}
 /* **************************************************** */
 .slidecontainer2 {
-  width: 80%;
+  width: 85%;
   height: 1.5rem;
 }
 

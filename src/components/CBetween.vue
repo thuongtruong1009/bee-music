@@ -22,6 +22,13 @@ const { counter } = storeToRefs(main);
 // slider.oninput = function () {
 //   output.innerHTML = this.value;
 // };
+const isPlaying = ref(false);
+const onPlaySong = () => {
+  isPlaying.value = !isPlaying.value;
+};
+
+const currentTime = ref(0);
+const currentVolume = ref(30);
 </script>
 
 <template>
@@ -125,45 +132,53 @@ const { counter } = storeToRefs(main);
 
     <div class="play-song p-3 bg-white rounded-lg">
       <div class="play-control flex justify-between items-center">
-        <div class="play-control__act flex items-center text-gray-500">
+        <div
+          class="play-control__act flex justify-between items-center text-gray-500 w-[18%]"
+        >
           <i class="far fa-heart" id="heart"></i>
           <i class="fas fa-music"></i>
           <i class="fas fa-expand-alt"></i>
         </div>
         <div
-          class="play-control__main flex items-center flex items-center cursor-pointer"
+          class="play-control__main w-[30%] flex justify-between items-center cursor-pointer"
         >
           <i class="fas fa-redo-alt play-repeat text-gray-500"></i>
           <i class="fas fa-fast-backward play-backward main-icon"></i>
-          <!-- <i class="fas fa-pause-circle pause-icon main-icon main-icon--big"></i> -->
-          <span class="play-inner">
-            <i
-              class="fas fa-play-circle play-icon main-icon main-icon--big"
-            ></i>
-          </span>
+          <i
+            class="fas fa-pause-circle"
+            @click="onPlaySong"
+            v-show="isPlaying === true"
+          ></i>
+          <i
+            class="fas fa-play-circle"
+            @click="onPlaySong"
+            v-show="isPlaying === false"
+          ></i>
           <i class="fas fa-fast-forward play-forward main-icon"></i>
           <i class="fas fa-random shuffle-song text-gray-500"></i>
         </div>
-        <div class="play-control__volume flex items-center">
+        <div class="play-control__volume w-[30%] flex justify-end items-center">
           <i class="fas fa-volume-down text-gray-500"></i>
           <div class="slidecontainer1 relative">
             <span
-              class="w-full h-0.5 bg-gray-500 absolute top-1/2 left-0"
+              class="w-full h-0.25 bg-red-500 absolute top-1/2 left-0"
             ></span>
             <input
               type="range"
               min="1"
               max="100"
-              value="50"
               class="slider1"
               id="myRange1"
+              v-model="currentVolume"
             />
           </div>
           <i class="fas fa-volume-up text-gray-500"></i>
         </div>
       </div>
       <div class="play-seekbar flex justify-between items-center">
-        <div class="timer__left text-gray-500" id="demo2">0:00</div>
+        <div class="timer__left text-gray-500" id="demo2">
+          {{ currentTime }}
+        </div>
         <div class="slidecontainer2 relative">
           <span
             class="w-full h-0.75 bg-gray-500 absolute top-1/2 left-0"
@@ -172,9 +187,9 @@ const { counter } = storeToRefs(main);
             type="range"
             min="1"
             max="100"
-            value="0"
             class="slider2"
             id="myRange2"
+            v-model="currentTime"
           />
         </div>
         <audio src="/mp3/ntt.mp3" id="song"></audio>

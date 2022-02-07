@@ -1,6 +1,6 @@
 <script setup>
 import CLeft from "../components/CLeft.vue";
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import { useCounterStore } from "../stores/counter";
 const main = useCounterStore();
 
@@ -31,11 +31,22 @@ onMounted(() => {
     .then((response) => response.json())
     .then((data) => {
       main.results = data["songs"]["top100_VN"][0]["songs"];
-      // main.avatar = data["songs"]["top100_VN"][0]["songs"][0]["avatar"];
-      // main.lyric = data["songs"]["top100_VN"][0]["songs"][0]["lyric"];
-      // main.bgImage = data["songs"]["top100_VN"][0]["songs"][0]["bgImage"];
     });
 });
+const srcSong = ref("");
+const playSound = (sound) => {
+  if (sound) {
+    var audio = new Audio(sound);
+    if (isPlaying.value == false) {
+      isPlaying.value = true;
+      audio.play();
+    } else if (isPlaying.value == true) {
+      isPlaying.value == false;
+      audio.pause();
+    }
+    srcSong.value = String(sound);
+  }
+};
 </script>
 
 <template>
@@ -129,6 +140,7 @@ onMounted(() => {
         v-for="(index, i) in main.results.length"
         :key="i"
         class="grid grid-cols-12 items-center py-3 hover:(pl-2 pr-3 bg-white) duration-200 rounded-md cursor-pointer text-gray-500 text-xs"
+        @click="playSound(`${main.results[i]['music']}`)"
       >
         <p>{{ numberFormatter(index) }}</p>
         <p class="col-span-5">{{ main.results[i]["title"] }}</p>
@@ -210,7 +222,6 @@ onMounted(() => {
             v-model="currentTime"
           />
         </div>
-        <audio src="/mp3/ntt.mp3" id="song"></audio>
         <div class="timer__right text-gray-500">3.00</div>
       </div>
     </div>

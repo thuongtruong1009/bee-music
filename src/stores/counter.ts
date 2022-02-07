@@ -5,6 +5,7 @@ export const useCounterStore = defineStore({
   state: () => ({
     counter: 0,
     results: "",
+    currentSong: "",
   }),
   getters: {
     doubleCount: (state) => state.counter * 2,

@@ -1,6 +1,6 @@
 <script setup>
 import CLeft from "../components/CLeft.vue";
-import { ref, computed } from "vue";
+import { ref, onMounted } from "vue";
 import { useCounterStore } from "../stores/counter";
 import { storeToRefs } from "pinia";
 const numberFormatter = (n) => {
@@ -13,7 +13,7 @@ const onLeftToggleClick = () => {
 };
 
 const main = useCounterStore();
-const { counter } = storeToRefs(main);
+// const { counter } = storeToRefs(main);
 
 // const slider = document.getElementById("myRange2");
 // const output = document.getElementById("demo2");
@@ -32,6 +32,25 @@ const onHeart = () => {
 };
 const currentTime = ref(0);
 const currentVolume = ref(30);
+
+// const getAPI = async () => {
+//   const response = await fetch(
+//     "https://api.apify.com/v2/key-value-stores/EJ3Ppyr2t73Ifit64/records/LATEST?fbclid=IwAR3lI6UNrh62He0eIZeVzJLiQ7fnUkqX7HAKUmrYwxiToUEuHxIXO8PDOwI"
+//   )
+//     .then((response) => response.json())
+//     .then((data) => main.getResponse(data));
+// };
+
+onMounted(() => {
+  fetch(
+    "https://api.apify.com/v2/key-value-stores/EJ3Ppyr2t73Ifit64/records/LATEST?fbclid=IwAR3lI6UNrh62He0eIZeVzJLiQ7fnUkqX7HAKUmrYwxiToUEuHxIXO8PDOwI"
+  )
+    .then((response) => response.json())
+    .then(
+      (data) =>
+        (main.nameSong = data["songs"]["top100_VN"][0]["songs"][0]["creator"])
+    );
+});
 </script>
 
 <template>
@@ -127,7 +146,7 @@ const currentVolume = ref(30);
         class="flex justify-between items-center pr-3 py-3 hover:(pl-2 pr-5 bg-white) duration-200 rounded-md cursor-pointer text-gray-500 text-xs"
       >
         <p class="-mr-30">{{ numberFormatter(i) }}</p>
-        <p>name song {{ i }}</p>
+        <p>{{ main.nameSong }} {{ i }}</p>
         <p>artics name {{ i }}</p>
         <p>{{ main.counter }}</p>
       </div>
@@ -136,7 +155,7 @@ const currentVolume = ref(30);
     <div class="play-song p-3 bg-white rounded-lg">
       <div class="play-control flex justify-between items-center">
         <div
-          class="play-control__act flex justify-between items-center text-gray-500 w-[18%]"
+          class="play-control__act flex justify-between items-center text-gray-500 w-[17%]"
         >
           <i
             class="far fa-heart"
@@ -152,28 +171,30 @@ const currentVolume = ref(30);
           <i class="fas fa-expand-alt"></i>
         </div>
         <div
-          class="play-control__main w-[30%] flex justify-between items-center cursor-pointer"
+          class="play-control__main w-[28%] flex justify-between items-center cursor-pointer"
         >
-          <i class="fas fa-redo-alt play-repeat text-gray-500"></i>
+          <i class="fas fa-redo-alt play-repeat text-gray-500 text-sm"></i>
           <i class="fas fa-fast-backward play-backward main-icon"></i>
           <i
-            class="fas fa-pause-circle"
+            class="fas fa-pause-circle text-3xl"
             @click="onPlaySong"
             v-show="isPlaying === true"
           ></i>
           <i
-            class="fas fa-play-circle"
+            class="fas fa-play-circle text-3xl"
             @click="onPlaySong"
             v-show="isPlaying === false"
           ></i>
           <i class="fas fa-fast-forward play-forward main-icon"></i>
-          <i class="fas fa-random shuffle-song text-gray-500"></i>
+          <i class="fas fa-random shuffle-song text-gray-500 text-sm"></i>
         </div>
-        <div class="play-control__volume w-[30%] flex justify-end items-center">
+        <div
+          class="play-control__volume w-[25%] flex justify-between items-center"
+        >
           <i class="fas fa-volume-down text-gray-500"></i>
           <div class="slidecontainer1 relative">
             <span
-              class="w-full h-0.25 bg-red-500 absolute top-1/2 left-0"
+              class="w-[90%] h-0.25 bg-red-500 absolute top-1/2 left-1"
             ></span>
             <input
               type="range"
@@ -184,7 +205,7 @@ const currentVolume = ref(30);
               v-model="currentVolume"
             />
           </div>
-          <i class="fas fa-volume-up text-gray-500"></i>
+          <i class="fas fa-volume-up text-gray-500 text-sm"></i>
         </div>
       </div>
       <div class="play-seekbar flex justify-between items-center">
@@ -262,7 +283,7 @@ i {
 }
 /* ****************************************************** */
 .slidecontainer1 {
-  width: 80%;
+  width: 85%;
   height: 1.5rem;
 }
 
@@ -284,7 +305,7 @@ i {
   border: 0;
   background: url("https://img.icons8.com/material-two-tone/24/000000/circled.png");
   cursor: pointer;
-  transform: scale(0.6);
+  transform: scale(0.55);
 }
 
 .slider1::-moz-range-thumb {
@@ -293,7 +314,7 @@ i {
   border: 0;
   background: url("https://img.icons8.com/material-two-tone/24/000000/circled.png");
   cursor: pointer;
-  transform: scale(0.6);
+  transform: scale(0.55);
 }
 /* ****************************************************** */
 

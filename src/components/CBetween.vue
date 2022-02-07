@@ -2,7 +2,8 @@
 import CLeft from "../components/CLeft.vue";
 import { ref, onMounted } from "vue";
 import { useCounterStore } from "../stores/counter";
-import { storeToRefs } from "pinia";
+const main = useCounterStore();
+
 const numberFormatter = (n) => {
   return (n < 10 ? "0" : "") + n;
 };
@@ -12,16 +13,6 @@ const onLeftToggleClick = () => {
   isLeftToggleActive.value = !isLeftToggleActive.value;
 };
 
-const main = useCounterStore();
-// const { counter } = storeToRefs(main);
-
-// const slider = document.getElementById("myRange2");
-// const output = document.getElementById("demo2");
-// output.innerHTML = slider.value;
-
-// slider.oninput = function () {
-//   output.innerHTML = this.value;
-// };
 const isPlaying = ref(false);
 const onPlaySong = () => {
   isPlaying.value = !isPlaying.value;
@@ -33,23 +24,17 @@ const onHeart = () => {
 const currentTime = ref(0);
 const currentVolume = ref(30);
 
-// const getAPI = async () => {
-//   const response = await fetch(
-//     "https://api.apify.com/v2/key-value-stores/EJ3Ppyr2t73Ifit64/records/LATEST?fbclid=IwAR3lI6UNrh62He0eIZeVzJLiQ7fnUkqX7HAKUmrYwxiToUEuHxIXO8PDOwI"
-//   )
-//     .then((response) => response.json())
-//     .then((data) => main.getResponse(data));
-// };
-
 onMounted(() => {
   fetch(
     "https://api.apify.com/v2/key-value-stores/EJ3Ppyr2t73Ifit64/records/LATEST?fbclid=IwAR3lI6UNrh62He0eIZeVzJLiQ7fnUkqX7HAKUmrYwxiToUEuHxIXO8PDOwI"
   )
     .then((response) => response.json())
-    .then(
-      (data) =>
-        (main.nameSong = data["songs"]["top100_VN"][0]["songs"][0]["creator"])
-    );
+    .then((data) => {
+      main.results = data["songs"]["top100_VN"][0]["songs"];
+      // main.avatar = data["songs"]["top100_VN"][0]["songs"][0]["avatar"];
+      // main.lyric = data["songs"]["top100_VN"][0]["songs"][0]["lyric"];
+      // main.bgImage = data["songs"]["top100_VN"][0]["songs"][0]["bgImage"];
+    });
 });
 </script>
 
@@ -141,13 +126,13 @@ onMounted(() => {
 
     <div class="overflow-y-scroll h-56 my-1">
       <div
-        v-for="i in 10"
+        v-for="(index, i) in main.results.length"
         :key="i"
-        class="flex justify-between items-center pr-3 py-3 hover:(pl-2 pr-5 bg-white) duration-200 rounded-md cursor-pointer text-gray-500 text-xs"
+        class="grid grid-cols-12 items-center py-3 hover:(pl-2 pr-3 bg-white) duration-200 rounded-md cursor-pointer text-gray-500 text-xs"
       >
-        <p class="-mr-30">{{ numberFormatter(i) }}</p>
-        <p>{{ main.nameSong }} {{ i }}</p>
-        <p>artics name {{ i }}</p>
+        <p>{{ numberFormatter(index) }}</p>
+        <p class="col-span-5">{{ main.results[i]["title"] }}</p>
+        <p class="col-span-5">{{ main.results[i]["creator"] }}</p>
         <p>{{ main.counter }}</p>
       </div>
     </div>

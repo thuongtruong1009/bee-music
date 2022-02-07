@@ -5,7 +5,7 @@
     "description": "Enjoy relaxing tunes after stressful working hours.",
     "license": "MIT",
     "scripts": {
-        "dev": "vite",
+        "dev": "vite --port 3000 --open",
         "build": "vue-tsc --noEmit && vite build",
         "preview": "vite preview --port 5050",
         "test:unit": "vitest --environment jsdom",

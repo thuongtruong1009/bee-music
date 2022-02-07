@@ -15,7 +15,7 @@ import CRight from "../components/CRight.vue";
 </template>
 
 <style scoped>
-/* @media (max-width: 800px) {
+@media (max-width: 800px) {
   .left,
   .right {
     display: none;
@@ -24,5 +24,5 @@ import CRight from "../components/CRight.vue";
     grid-template-columns: 0 1fr 0;
     border-radius: 1rem;
   }
-} */
+}
 </style>

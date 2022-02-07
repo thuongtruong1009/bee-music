@@ -130,7 +130,9 @@ const { counter } = storeToRefs(main);
           <i class="fas fa-music"></i>
           <i class="fas fa-expand-alt"></i>
         </div>
-        <div class="play-control__main flex items-center flex items-center cursor-pointer">
+        <div
+          class="play-control__main flex items-center flex items-center cursor-pointer"
+        >
           <i class="fas fa-redo-alt play-repeat text-gray-500"></i>
           <i class="fas fa-fast-backward play-backward main-icon"></i>
           <!-- <i class="fas fa-pause-circle pause-icon main-icon main-icon--big"></i> -->

@@ -64,6 +64,9 @@ npm run lint
 + [Pinia for vue](https://github.com/vuejs/pinia)
 + [Windicss for Vite](https://windicss.org/integrations/vite.html)
 + implicity module error fixes [here](https://pjausovec.medium.com/how-to-fix-error-ts7016-could-not-find-a-declaration-file-for-module-xyz-has-an-any-type-ecab588800a8)
++ [Karma webpack](https://www.digitalocean.com/community/tutorials/vuejs-unit-testing-karma-mocha)
++ https://codelearn.io/sharing/tung-buoc-tro-thanh-dev-front-end-xin-phan-3
++ [Istanbul instrumenter loader](https://github.com/webpack-contrib/istanbul-instrumenter-loader)
 
 ## Contribute
 + star this repo

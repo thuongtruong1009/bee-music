@@ -13,16 +13,12 @@ const onLeftToggleClick = () => {
   isLeftToggleActive.value = !isLeftToggleActive.value;
 };
 
-const isPlaying = ref(false);
-const onPlaySong = () => {
-  isPlaying.value = !isPlaying.value;
-};
 const isHeart = ref(false);
 const onHeart = () => {
   isHeart.value = !isHeart.value;
 };
-const currentTime = ref(0);
 const currentVolume = ref(30);
+const currentTime = ref(0);
 
 onMounted(() => {
   fetch(
@@ -34,19 +30,18 @@ onMounted(() => {
     });
 });
 const srcSong = ref("");
-const playSound = (sound) => {
+const loadSound = (sound) => {
   if (sound) {
-    var audio = new Audio(sound);
-    if (isPlaying.value == false) {
-      isPlaying.value = true;
-      audio.play();
-    } else if (isPlaying.value == true) {
-      isPlaying.value == false;
-      audio.pause();
-    }
     srcSong.value = String(sound);
+    isPlaying.value = true;
+    this.$refs.audioPlayer.play();
   }
 };
+const isPlaying = ref(false);
+const onPlaySong = () => {
+  isPlaying.value = !isPlaying.value;
+};
+///////////////////////////////////////////////////
 </script>
 
 <template>
@@ -119,7 +114,7 @@ const playSound = (sound) => {
     </div>
     <div class="my-playlist">
       <div class="playlist-head pt-5 flex justify-between items-center">
-        <h4>My Playlist</h4>
+        <h4>Top 100 VN</h4>
         <a
           class="playlist-more btn-hover hover:(text-white bg-black px-2) rounded-3xl duration-200 cursor-pointer text-xs"
           >Show all</a
@@ -140,7 +135,7 @@ const playSound = (sound) => {
         v-for="(index, i) in main.results.length"
         :key="i"
         class="grid grid-cols-12 items-center py-3 hover:(pl-2 pr-3 bg-white) duration-200 rounded-md cursor-pointer text-gray-500 text-xs"
-        @click="playSound(`${main.results[i]['music']}`)"
+        @click="loadSound(`${main.results[i]['music']}`)"
       >
         <p>{{ numberFormatter(index) }}</p>
         <p class="col-span-5">{{ main.results[i]["title"] }}</p>
@@ -222,6 +217,7 @@ const playSound = (sound) => {
             v-model="currentTime"
           />
         </div>
+        <audio :src="srcSong" autoplay ref="audioPlayer"></audio>
         <div class="timer__right text-gray-500">3.00</div>
       </div>
     </div>

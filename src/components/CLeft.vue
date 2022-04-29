@@ -1,38 +1,20 @@
 <script setup>
 import { ref } from "vue";
-const isDark = ref(false);
-const onDarkMode = () => {
-  if (isDark.value == false) {
-    isDark.value = true;
-  } else {
-    isDark.value = false;
-  }
-};
+import { RouterLink } from "vue-router";
+
+import CDarkMode from './CDarkMode.vue'
 </script>
 
 <template>
-  <div class="left-nav-container rounded-l-3xl">
+  <div class="left-nav-container rounded-l-3xl dark:bg-black">
     <div class="p-6">
       <div class="flex justify-between items-center">
-        <div
-          class="mode-toggle"
-          @click="onDarkMode"
-          :class="{ 'dark-mode': isDark }"
-        >
-          <div class="toggle" :class="{ 'dark-mode': isDark }">
-            <div
-              id="dark-mode"
-              type="checkbox"
-              :class="{ 'dark-mode': isDark }"
-            ></div>
-          </div>
-        </div>
+        <CDarkMode />
         <i class="fas fa-stream js-hide-navbar cursor-pointer"></i>
       </div>
       <div class="logo py-3">
         <i class="navbar__logo fab fa-forumbee text-orange-300 text-3xl"></i>
-        <span class="navbar__primary-text text-orange-300 text-xl">Bee</span
-        ><span class="text-xl">music</span>
+        <span class="navbar__primary-text text-orange-300 text-xl">Bee</span><span class="text-xl">music</span>
       </div>
       <div class="navbar-content text-gray-500 pl-1 relative">
         <nav>
@@ -54,9 +36,7 @@ const onDarkMode = () => {
               <a href="#"><i class="far fa-newspaper"></i>New and Notable</a>
             </li>
             <li class="navbar-content__icon">
-              <a href="#"
-                ><i class="fas fa-calendar-alt"></i>Realese Calendar</a
-              >
+              <a href="#"><i class="fas fa-calendar-alt"></i>Realese Calendar</a>
             </li>
             <li class="navbar-content__icon">
               <a href="#"><i class="fas fa-ticket-alt"></i>Events</a>
@@ -81,93 +61,20 @@ const onDarkMode = () => {
       </div>
     </div>
     <div
-      class="navbar-user flex justify-between items-center mt-2 py-5 px-4 border-1 border-solid border-t-[#e9e9e9] border-b-transparent border-l-transparent border-r-transparent"
-    >
-      <div class="user-avt flex items-center">
-        <img
-          src="https://avatars.githubusercontent.com/thuongtruong1009?v=2&s=37"
-          alt="avatar"
-          class="rounded-full mr-2"
-        />
-        <p class="text-sm cursor-pointer">thuongtruong1009</p>
-      </div>
-      <a href="/about"><i class="fas fa-chevron-right"></i></a>
+      class="navbar-user flex justify-between items-center p-5 border-1 border-solid border-t-[#e9e9e9] border-b-transparent border-l-transparent border-r-transparent">
+      <a href="https://github.com/thuongtruong1009/bee-music">
+        <div class="user-avt flex items-center">
+          <img src="https://avatars.githubusercontent.com/thuongtruong1009?v=2&s=37" alt="avatar"
+            class="rounded-full mr-2" />
+          <p class="text-sm cursor-pointer">thuongtruong1009</p>
+        </div>
+      </a>
+      <RouterLink to="/about"><i class="fas fa-chevron-right text-gray-400"></i></RouterLink>
     </div>
   </div>
 </template>
 
 <style scoped>
-.mode-toggle {
-  position: relative;
-  padding: 0;
-  width: 44px;
-  height: 24px;
-  min-width: 36px;
-  min-height: 20px;
-  background-color: #262626;
-  border: 0;
-  border-radius: 24px;
-  outline: 0;
-  overflow: hidden;
-  cursor: pointer;
-  z-index: 2;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  -webkit-touch-callout: none;
-  appearance: none;
-  transition: background-color 0.5s ease;
-}
-
-.mode-toggle .toggle {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  margin: auto;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  border: 3px solid transparent;
-  box-shadow: inset 0 0 0 2px #a5abba;
-  overflow: hidden;
-  transition: transform 0.5s ease;
-}
-
-.mode-toggle .toggle #dark-mode {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border-radius: 50%;
-}
-
-.mode-toggle .toggle #dark-mode:before {
-  content: "";
-  position: relative;
-  width: 100%;
-  height: 100%;
-  left: 50%;
-  float: left;
-  background-color: #a5abba;
-  transition: border-radius 0.5s ease, width 0.5s ease, height 0.5s ease,
-    left 0.5s ease, transform 0.5s ease;
-}
-
-.dark-mode .mode-toggle {
-  background-color: #333;
-}
-
-.dark-mode .mode-toggle .toggle {
-  transform: translateX(19px);
-}
-
-.dark-mode .mode-toggle .toggle #dark-mode:before {
-  border-radius: 50%;
-  width: 150%;
-  height: 85%;
-  left: 40%;
-  transform: translate(-10%, -40%), rotate(-35deg);
-}
-
 li:hover {
   color: white;
   background: black;

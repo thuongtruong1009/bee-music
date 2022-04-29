@@ -13,6 +13,13 @@
     <link rel="prefetch" href="path-to-chunk-with-modal-window" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500&display=swap" rel="stylesheet">
+    <script>
+      if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark');
+      } else {
+          document.documentElement.classList.remove('dark')
+      }
+  </script>
 </head>
 
 <body>

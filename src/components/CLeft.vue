@@ -11,9 +11,7 @@ const onDarkMode = () => {
 </script>
 
 <template>
-  <div
-    class="left-nav-container rounded-l-3xl divide-1 divide-solid divide-y divide-gray-300"
-  >
+  <div class="left-nav-container rounded-l-3xl">
     <div class="p-6">
       <div class="flex justify-between items-center">
         <div
@@ -82,11 +80,13 @@ const onDarkMode = () => {
         </nav>
       </div>
     </div>
-    <div class="navbar-user flex justify-between items-center mt-2 py-5 px-4">
+    <div
+      class="navbar-user flex justify-between items-center mt-2 py-5 px-4 border-1 border-solid border-t-[#e9e9e9] border-b-transparent border-l-transparent border-r-transparent"
+    >
       <div class="user-avt flex items-center">
         <img
           src="https://avatars.githubusercontent.com/thuongtruong1009?v=2&s=37"
-          alt=""
+          alt="avatar"
           class="rounded-full mr-2"
         />
         <p class="text-sm cursor-pointer">thuongtruong1009</p>
@@ -116,6 +116,7 @@ const onDarkMode = () => {
   appearance: none;
   transition: background-color 0.5s ease;
 }
+
 .mode-toggle .toggle {
   position: absolute;
   top: 0;
@@ -130,6 +131,7 @@ const onDarkMode = () => {
   overflow: hidden;
   transition: transform 0.5s ease;
 }
+
 .mode-toggle .toggle #dark-mode {
   position: relative;
   width: 100%;
@@ -137,6 +139,7 @@ const onDarkMode = () => {
   overflow: hidden;
   border-radius: 50%;
 }
+
 .mode-toggle .toggle #dark-mode:before {
   content: "";
   position: relative;
@@ -148,12 +151,15 @@ const onDarkMode = () => {
   transition: border-radius 0.5s ease, width 0.5s ease, height 0.5s ease,
     left 0.5s ease, transform 0.5s ease;
 }
+
 .dark-mode .mode-toggle {
   background-color: #333;
 }
+
 .dark-mode .mode-toggle .toggle {
   transform: translateX(19px);
 }
+
 .dark-mode .mode-toggle .toggle #dark-mode:before {
   border-radius: 50%;
   width: 150%;
@@ -161,10 +167,12 @@ const onDarkMode = () => {
   left: 40%;
   transform: translate(-10%, -40%), rotate(-35deg);
 }
+
 li:hover {
   color: white;
   background: black;
 }
+
 i {
   margin-right: 0.8rem;
   margin-left: 0.2rem;
@@ -178,6 +186,7 @@ i {
   border-radius: 0.75rem;
   cursor: pointer;
 }
+
 .navbar-content li::after {
   content: "";
   position: absolute;
@@ -187,9 +196,11 @@ i {
   height: 2.6rem;
   right: -1.5rem;
 }
+
 .navbar-content li:hover::after {
   background: black;
 }
+
 @media (max-width: 800px) {
   li {
     font-size: 0.75rem;

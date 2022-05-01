@@ -66,8 +66,8 @@ const loadSound = (sound) => {
         <i class="fas fa-search search-btn pr-3"></i>
         <input
           type="text"
-          class="search-input outline-none border-none bg-transparent w-full"
-          placeholder="Search for artist, songs....."
+          class="search-input outline-none border-none bg-transparent w-full placeholder-gray-400"
+          placeholder="Search for artist, songs and..."
         />
       </div>
       <i class="fas fa-bars text-2xl px-4 hidden"></i>
@@ -118,12 +118,12 @@ const loadSound = (sound) => {
       <div class="playlist-head pt-5 flex justify-between items-center">
         <h4>Top 100 VN</h4>
         <a
-          class="playlist-more btn-hover hover:(text-white bg-black px-2) rounded-3xl duration-200 cursor-pointer text-xs"
+          class="playlist-more btn-hover hover:(text-white bg-gray-600 px-2) text-gray-500 font-medium rounded-3xl duration-200 cursor-pointer text-xs"
           >Show all</a
         >
       </div>
       <div
-        class="playlist-list flex justify-between text-xs pr-3 py-1 text-gray-600"
+        class="playlist-list flex justify-between text-xs px-3 py-1 text-gray-400"
       >
         <p class="playlist__number -mr-30">#</p>
         <p class="playlist__title">TITLE</p>
@@ -132,12 +132,12 @@ const loadSound = (sound) => {
       </div>
     </div>
 
-    <div class="overflow-y-scroll h-56 my-1">
+    <div class="overflow-y-scroll h-50 my-1">
       <div v-if="!isLoading">
         <div
           v-for="(index, i) in main.results.length"
           :key="i"
-          class="grid grid-cols-12 items-center py-3 hover:(pl-2 pr-3 bg-white) duration-200 rounded-md cursor-pointer text-gray-500 text-xs"
+          class="grid grid-cols-12 items-center p-3 hover:(pl-4 bg-white shadow-lg shadow-gray-300 text-gray-700 font-medium) duration-200 rounded-md cursor-pointer text-gray-500 text-xs"
           @click="loadSound(`${main.results[i]['music']}`)"
         >
           <p>{{ numberFormatter(index) }}</p>

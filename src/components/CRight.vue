@@ -33,7 +33,7 @@
       <p class="sidebar__favorite-title">Favorite Artists</p>
       <div
         class="sidebar__favorite-list flex justify-between items-center p-1.5 text-sm"
-        v-for="i in 2"
+        v-for="i in 4"
         :key="i"
       >
         <div class="artist-info__avt flex items-center">

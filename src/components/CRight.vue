@@ -1,5 +1,5 @@
 <template>
-  <div class="right-container rounded-r-3xl">
+  <div class="right-container rounded-r-3xl dark:bg-$dark_weak">
     <div class="sidebar__shortcuts">
       <p class="sidebar__shortcuts-title font-bold pt-2">
         Shortcuts

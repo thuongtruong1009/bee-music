@@ -47,26 +47,26 @@ const loadSound = (sound) => {
 </script>
 
 <template>
-  <div class="between-container">
+  <div class="between-container dark:bg-$dark_weak">
     <CLeft
       class="absolute h-full w-58 bg-white z-10 top-0 left-0"
       v-if="isLeftToggleActive === true"
     />
-    <header class="flex justify-between items-center text-gray-500">
+    <header class="flex justify-between items-center text-gray-500 dark:text-$dark_text">
       <i
         class="fas fa-bars text-2xl px-2 hidden"
         @click="onLeftToggleClick"
       ></i>
-      <i class="fas fa-arrow-left px-2 cursor-pointer hover:text-black"></i>
-      <i class="fas fa-arrow-right px-4 cursor-pointer hover:text-black"></i>
+      <i class="fas fa-arrow-left px-2 cursor-pointer hover:text-black dark:hover:text-white"></i>
+      <i class="fas fa-arrow-right px-4 cursor-pointer hover:text-black dark:hover:text-white"></i>
 
       <div
-        class="main-content__search-form flex justify-around px-5 py-2.25 rounded-2xl bg-white w-full"
+        class="main-content__search-form flex justify-around px-5 py-2.25 rounded-2xl bg-white dark:bg-$dark_input dark:hover:bg-[#2D4258] w-full"
       >
         <i class="fas fa-search search-btn pr-3"></i>
         <input
           type="text"
-          class="search-input outline-none border-none bg-transparent w-full placeholder-gray-400"
+          class="search-input outline-none border-none bg-transparent w-full placeholder-gray-400 dark:text-white"
           placeholder="Search for artist, songs and..."
         />
       </div>
@@ -137,7 +137,7 @@ const loadSound = (sound) => {
         <div
           v-for="(index, i) in main.results.length"
           :key="i"
-          class="grid grid-cols-12 items-center p-3 hover:(pl-4 bg-white shadow-lg shadow-gray-300 text-gray-700 font-medium) duration-200 rounded-md cursor-pointer text-gray-500 text-xs"
+          class="grid grid-cols-12 items-center p-3 hover:(pl-4 bg-white shadow-lg shadow-gray-300 text-gray-700 font-medium) dark:hover:bg-$dark_input duration-200 rounded-md cursor-pointer text-gray-500 dark:text-gray-400 dark:hover:(text-gray-200 shadow-gray-700) text-xs"
           @click="loadSound(`${main.results[i]['music']}`)"
         >
           <p>{{ numberFormatter(index) }}</p>

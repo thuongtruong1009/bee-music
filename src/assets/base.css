@@ -5,6 +5,7 @@
   margin: 0;
   padding: 0;
   /* overflow-x: hidden; */
+  user-select: none;
 }
 
 body {
@@ -22,6 +23,9 @@ body {
 a{
   text-decoration: none;
   color: inherit;
+}
+li{
+  list-style: none;
 }
 ::-webkit-scrollbar {
   width: 2px;

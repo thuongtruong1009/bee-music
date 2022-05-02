@@ -29,7 +29,7 @@ import CDarkMode from "./CDarkMode.vue";
       </nav>
 
       <nav class="relative">
-        <p>Discover</p>
+        <p class="text-[#9ca3af] dark:text-[#9ca3af99] text-xs">Discover</p>
         <ul>
           <li>
             <a href="#"><i class="far fa-newspaper"></i>New and Notable</a>
@@ -44,7 +44,7 @@ import CDarkMode from "./CDarkMode.vue";
       </nav>
 
       <nav class="relative">
-        <p>Your Collection</p>
+        <p class="text-[#9ca3af] dark:text-[#9ca3af99] text-xs">Your Collection</p>
         <ul>
           <li>
             <a href="#"><i class="far fa-heart"></i>Favorite Songs</a>
@@ -79,14 +79,11 @@ i {
 }
 
 nav p {
-  font-size: 0.75rem;
-  color: rgb(156, 163, 175);
   padding: 0.6rem 0.5rem;
 }
 
 nav li {
   padding: 0.6rem 0.5rem;
-  list-style: none;
   transition: 0.1s linear;
   border-radius: 0.75rem;
   cursor: pointer;

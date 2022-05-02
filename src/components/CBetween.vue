@@ -121,7 +121,7 @@ const loadSound = (sound) => {
       </div>
     </div>
     <div class="my-playlist">
-      <div class="playlist-head pt-5 flex justify-between items-center">
+      <div class="playlist-head pt-5 flex justify-between items-center dark:text-$dark_text">
         <h4>Top 100 VN</h4>
         <a
           class="playlist-more btn-hover hover:(text-white bg-gray-600 px-2) text-gray-500 font-medium rounded-3xl duration-200 cursor-pointer text-xs"
@@ -228,9 +228,9 @@ const loadSound = (sound) => {
             ></i>
           </div>
         </div>
-        <div class="play-control__volume flex justify-end items-center">
+        <div class="play-control__volume flex justify-end items-center text-gray-500">
           <div>
-            <i class="fas fa-volume-down text-gray-500"></i>
+            <i class="fas fa-volume-down"></i>
           </div>
           <div class="slidecontainer1 relative">
             <span
@@ -246,7 +246,7 @@ const loadSound = (sound) => {
             />
           </div>
           <div>
-            <i class="fas fa-volume-up text-gray-500 text-sm"></i>
+            <i class="fas fa-volume-up text-sm"></i>
           </div>
         </div>
       </div>
@@ -329,7 +329,7 @@ i {
 
 /* ****************************************************** */
 .slidecontainer1 {
-  width: 85%;
+  width: 50%;
   height: 1.5rem;
 }
 

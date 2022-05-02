@@ -59,8 +59,8 @@ import CDarkMode from "./CDarkMode.vue";
       </nav>
     </div>
     <div
-      class="navbar-user flex justify-between items-center p-5 border-1 border-solid border-t-[#e9e9e9] border-b-transparent border-l-transparent border-r-transparent rounded-bl-3xl dark:bg-[#1E293B]">
-      <a href="https://github.com/thuongtruong1009/bee-music">
+      class="navbar-user flex justify-between items-center p-5 border-1 border-solid border-t-[#e9e9e9] dark:border-t-gray-600 border-b-transparent border-l-transparent border-r-transparent rounded-bl-3xl dark:bg-[#1E293B]">
+      <a href="">
         <div class="user-avt flex items-center">
           <img src="https://avatars.githubusercontent.com/thuongtruong1009?v=2&s=37" alt="avatar"
             class="rounded-full mr-2" />

@@ -1,6 +1,6 @@
 <script setup>
 import CLeft from "../components/CLeft.vue";
-import { ref, onMounted, computed, watchEffect } from "vue";
+import { ref, onMounted } from "vue";
 import { useCounterStore } from "../stores/counter";
 const main = useCounterStore();
 
@@ -47,40 +47,46 @@ const loadSound = (sound) => {
 </script>
 
 <template>
-  <div class="between-container">
+  <div class="between-container dark:bg-$dark_weak">
     <CLeft
       class="absolute h-full w-58 bg-white z-10 top-0 left-0"
       v-if="isLeftToggleActive === true"
     />
-    <header class="flex justify-between items-center text-gray-500">
+    <header
+      class="flex justify-between items-center text-gray-500 dark:text-$dark_text"
+    >
       <i
         class="fas fa-bars text-2xl px-2 hidden"
         @click="onLeftToggleClick"
       ></i>
-      <i class="fas fa-arrow-left px-2 cursor-pointer hover:text-black"></i>
-      <i class="fas fa-arrow-right px-4 cursor-pointer hover:text-black"></i>
+      <i
+        class="fas fa-arrow-left px-2 cursor-pointer hover:text-black dark:hover:text-white"
+      ></i>
+      <i
+        class="fas fa-arrow-right px-4 cursor-pointer hover:text-black dark:hover:text-white"
+      ></i>
 
       <div
-        class="main-content__search-form flex justify-around px-5 py-2.25 rounded-2xl bg-white w-full"
+        class="main-content__search-form flex justify-around px-5 py-2.25 rounded-2xl bg-white dark:bg-$dark_input dark:hover:bg-[#2D4258] w-full cursor-pointer gap-2"
       >
-        <i class="fas fa-search search-btn pr-3"></i>
+        <i class="fas fa-search search-btn"></i>
         <input
           type="text"
-          class="search-input outline-none border-none bg-transparent w-full"
-          placeholder="Search for artist, songs....."
+          class="search-input outline-none border-none bg-transparent w-full placeholder-gray-400 dark:text-white"
+          placeholder="Search for artist, songs and..."
         />
       </div>
       <i class="fas fa-bars text-2xl px-4 hidden"></i>
     </header>
 
     <div class="pt-4 pb-1">
-      <p class="main-content__des text-[0.6rem]">
+      <p class="main-content__des text-[0.6rem] flex items-center dark:text-$dark_text">
         What's hot<span
-          ><img src="/img/fire.png" alt="" width="16px" height="17px"
+          ><img src="/img/fire.png" alt="fire_icon" width="16px" height="16px"
         /></span>
       </p>
     </div>
-    <div class="main-content__trend flex justify-between items-center pb-3.5">
+    <div class="main-content__trend flex justify-between items-center pb-3.5 dark:text-$dark_text">
       <div class="main-content__trend-title font-semibold">Trending</div>
       <div
         class="main-content__trend-more text-xs flex items-center text-gray-500 rounded-3xl py-1 duration-200 cursor-pointer hover:(text-white bg-black px-2)"
@@ -115,15 +121,15 @@ const loadSound = (sound) => {
       </div>
     </div>
     <div class="my-playlist">
-      <div class="playlist-head pt-5 flex justify-between items-center">
+      <div class="playlist-head pt-5 flex justify-between items-center dark:text-$dark_text">
         <h4>Top 100 VN</h4>
         <a
-          class="playlist-more btn-hover hover:(text-white bg-black px-2) rounded-3xl duration-200 cursor-pointer text-xs"
+          class="playlist-more btn-hover hover:(text-white bg-gray-600 px-2) text-gray-500 font-medium rounded-3xl duration-200 cursor-pointer text-xs"
           >Show all</a
         >
       </div>
       <div
-        class="playlist-list flex justify-between text-xs pr-3 py-1 text-gray-600"
+        class="playlist-list flex justify-between text-xs px-3 py-1 text-gray-400"
       >
         <p class="playlist__number -mr-30">#</p>
         <p class="playlist__title">TITLE</p>
@@ -132,12 +138,12 @@ const loadSound = (sound) => {
       </div>
     </div>
 
-    <div class="overflow-y-scroll h-56 my-1">
+    <div class="overflow-y-scroll h-50 my-1">
       <div v-if="!isLoading">
         <div
           v-for="(index, i) in main.results.length"
           :key="i"
-          class="grid grid-cols-12 items-center py-3 hover:(pl-2 pr-3 bg-white) duration-200 rounded-md cursor-pointer text-gray-500 text-xs"
+          class="grid grid-cols-12 items-center p-3 hover:(pl-4 bg-white shadow-lg shadow-gray-300 text-gray-700 font-medium) dark:hover:bg-$dark_input duration-200 rounded-md cursor-pointer text-gray-500 dark:text-gray-400 dark:hover:(text-gray-200 shadow-gray-800) text-xs"
           @click="loadSound(`${main.results[i]['music']}`)"
         >
           <p>{{ numberFormatter(index) }}</p>
@@ -160,46 +166,72 @@ const loadSound = (sound) => {
       </div>
     </div>
 
-    <div class="play-song p-3 bg-white rounded-lg">
-      <div class="play-control flex justify-between items-center">
+    <div class="play-song p-3 bg-white rounded-lg dark:bg-$dark_field">
+      <div class="play-control grid grid-cols-3 justify-between items-center">
         <div
-          class="play-control__act flex justify-between items-center text-gray-500 w-[17%]"
+          class="play-control__act flex justify-start items-center text-gray-500 dark:text-$dark_text gap-2"
         >
-          <i
-            class="far fa-heart"
-            @click="onHeart"
-            v-show="isHeart === false"
-          ></i>
-          <i
-            class="fas fa-heart text-red-600"
-            @click="onHeart"
-            v-show="isHeart === true"
-          ></i>
-          <i class="fas fa-music"></i>
-          <i class="fas fa-expand-alt"></i>
+          <div
+            class="dark:bg-$dark_head dark:hover:(bg-$dark_highlight text-$dark_btn) p-1 rounded-md"
+          >
+            <i
+              class="far fa-heart"
+              @click="onHeart"
+              v-show="isHeart === false"
+            ></i>
+            <i
+              class="fas fa-heart text-red-600"
+              @click="onHeart"
+              v-show="isHeart === true"
+            ></i>
+          </div>
+          <div
+            class="dark:bg-$dark_head dark:hover:(bg-$dark_highlight text-$dark_btn) p-1 rounded-md"
+          >
+            <i class="fas fa-music"></i>
+          </div>
+          <div
+            class="dark:bg-$dark_head dark:hover:(bg-$dark_highlight text-$dark_btn) p-1 rounded-md"
+          >
+            <i class="fas fa-expand-alt"></i>
+          </div>
         </div>
         <div
-          class="play-control__main w-[28%] flex justify-between items-center cursor-pointer"
+          class="play-control__main flex justify-center items-center dark:text-$dark_text gap-2"
         >
-          <i class="fas fa-redo-alt play-repeat text-gray-500 text-sm"></i>
-          <i class="fas fa-fast-backward play-backward main-icon"></i>
-          <i
-            class="fas fa-pause-circle text-3xl"
-            @click="onPlaySong"
-            v-show="isPlaying"
-          ></i>
-          <i
-            class="fas fa-play-circle text-3xl"
-            @click="onPlaySong"
-            v-show="!isPlaying"
-          ></i>
-          <i class="fas fa-fast-forward play-forward main-icon"></i>
-          <i class="fas fa-random shuffle-song text-gray-500 text-sm"></i>
+          <div class="text-gray-500 dark:text-$dark_text dark:hover:text-$dark_btn text-sm">
+            <i
+              class="fas fa-redo-alt play-repeat"
+            ></i>
+          </div>
+          <div class="dark:text-$dark_btn dark:hover:text-white">
+            <i class="fas fa-fast-backward play-backward main-icon"></i>
+          </div>
+          <div class="dark:text-$dark_btn dark:hover:text-white">
+            <i
+              class="fas fa-pause-circle text-3xl"
+              @click="onPlaySong"
+              v-show="isPlaying"
+            ></i>
+            <i
+              class="fas fa-play-circle text-3xl"
+              @click="onPlaySong"
+              v-show="!isPlaying"
+            ></i>
+          </div>
+          <div class="dark:text-$dark_btn dark:hover:text-white">
+            <i class="fas fa-fast-forward play-forward main-icon"></i>
+          </div>
+          <div class="text-gray-500 dark:text-$dark_text dark:hover:text-$dark_btn text-sm">
+            <i
+              class="fas fa-random shuffle-song"
+            ></i>
+          </div>
         </div>
-        <div
-          class="play-control__volume w-[25%] flex justify-between items-center"
-        >
-          <i class="fas fa-volume-down text-gray-500"></i>
+        <div class="play-control__volume flex justify-end items-center text-gray-500">
+          <div>
+            <i class="fas fa-volume-down"></i>
+          </div>
           <div class="slidecontainer1 relative">
             <span
               class="w-[90%] h-0.25 bg-red-500 absolute top-1/2 left-1"
@@ -208,16 +240,18 @@ const loadSound = (sound) => {
               type="range"
               min="1"
               max="100"
-              class="slider1"
+              class="slider1 bg-transparent"
               id="myRange1"
               v-model="currentVolume"
             />
           </div>
-          <i class="fas fa-volume-up text-gray-500 text-sm"></i>
+          <div>
+            <i class="fas fa-volume-up text-sm"></i>
+          </div>
         </div>
       </div>
-      <div class="play-seekbar flex justify-between items-center">
-        <div class="timer__left text-gray-500" id="demo2">
+      <div class="play-seekbar flex justify-between items-center text-gray-500 text-sm">
+        <div class="timer__left">
           {{ currentTime }}
         </div>
         <div class="slidecontainer2 relative">
@@ -228,13 +262,13 @@ const loadSound = (sound) => {
             type="range"
             min="1"
             max="100"
-            class="slider2"
+            class="slider2 dark:bg-$dark_higlight"
             id="myRange2"
             v-model="currentTime"
           />
         </div>
         <audio :src="srcSong" autoplay ref="audioPlayer"></audio>
-        <div class="timer__right text-gray-500">3.00</div>
+        <div class="timer__right">3.00</div>
       </div>
     </div>
   </div>
@@ -295,7 +329,7 @@ i {
 
 /* ****************************************************** */
 .slidecontainer1 {
-  width: 85%;
+  width: 50%;
   height: 1.5rem;
 }
 

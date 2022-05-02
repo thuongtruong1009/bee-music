@@ -7,7 +7,8 @@
 ## Demo
 [Preview at here](https://bee-music.netlify.app/)
 
-![image demo](/public/demo_main.jpg)
+![image demo](/public/preview/light.png)
+![image demo](/public/preview/dark.png)
 
 This template should help get you started developing with Vue 3 in Vite.
 
@@ -76,14 +77,17 @@ npm run lint
 + Congratulate, you have just contribute to them.
 
 ## Reference
-+ idea inspiration: [bee-music](https://dribbble.com/shots/16618273-Bee-Music-Music-Media-Player-Dashboard?fbclid=IwAR35hkSSs2dB2Ek66GAX-yPDfx3JYxxJgeQdwweuEiEtne02IUYk13kxDnk)
-+ progress at [latest project updated](https://github.com/thuongtruong1009/bee-music/projects)
-+ Learning front-end web full course at [Front-end course](https://github.com/thuongtruong1009/challenge-resposive-web-design).
-+ Learn Snake Game tutorial at [Snake-Game-OOP](https://github.com/thuongtruong1009/Snake-Game-OOP)
-+ Learn Java for new beginner at [Java training](https://github.com/thuongtruong1009/java-oop-training)
-+ Make flip card game at [flip-card](https://github.com/thuongtruong1009/flip-cards)
-+ Learn computer architecture at [architecture](https://github.com/thuongtruong1009/computer-architecture)
++ Get idea inspiration: [bee-music](https://dribbble.com/shots/16618273-Bee-Music-Music-Media-Player-Dashboard?fbclid=IwAR35hkSSs2dB2Ek66GAX-yPDfx3JYxxJgeQdwweuEiEtne02IUYk13kxDnk)
++ Follow progresses at [latest project updated](https://github.com/thuongtruong1009/bee-music/projects)
++ Enhance front-end skills through [twitter-meta](https://github.com/thuongtruong1009/twitter-meta)
++ Generate your GitHub informations by [gitbox](https://github.com/thuongtruong1009/gitbox)
++ Begining Vue through [notedev](https://github.com/thuongtruong1009/notedev)
++ Learning front-end web full course at [frontend-master](https://github.com/thuongtruong1009/frontend-master)
++ Learn Object-Oriented-Programming tutorial at [Snake-Game-OOP](https://github.com/thuongtruong1009/Snake-Game-OOP)
++ Become Java master for new beginner at [Java-training](https://github.com/thuongtruong1009/java-oop-training)
 + Pratice UI/UX at [league-fo-legend](https://github.com/thuongtruong1009/league-of-legends-clone)
++ Make flip card game at [flip-card](https://github.com/thuongtruong1009/flip-cards)
++ Learn computer architecture at [computer-architecture](https://github.com/thuongtruong1009/computer-architecture)
 
 ## ❤️ [Support me](https://www.paypal.me/thuongtruong1009)
 > We are looking for sponsors to join us to have better community reach and impact.

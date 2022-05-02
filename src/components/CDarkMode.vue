@@ -1,11 +1,14 @@
 <template>
   <div
     class="mode-toggle flex items-center"
-    :class="isDark ? 'justify-end' : 'justify-start'"
+    :class="isDark ? 'justify-end bg-white' : 'justify-start bg-[#262626]'"
     @click="onThemeChange"
   >
     <div class="toggle">
-      <div class="dark-mode"></div>
+      <div
+        class="dark-mode"
+        :class="isDark ? 'before:bg-black' : 'before:bg-[#a5abba]'"
+      ></div>
     </div>
   </div>
 </template>
@@ -45,7 +48,6 @@ const onThemeChange = () => {
   height: 1.5rem;
   min-width: 2.5rem;
   min-height: 1.5rem;
-  background-color: #262626;
   border-radius: 1.75rem;
   cursor: pointer;
   z-index: 2;
@@ -53,12 +55,14 @@ const onThemeChange = () => {
   -webkit-touch-callout: none;
   transition: 0.5s linear;
 }
+
 .mode-toggle .toggle {
   width: 1.25rem;
   height: 1.25rem;
   border-radius: 50%;
   box-shadow: inset 0 0 0 2px #a5abba;
 }
+
 .mode-toggle .toggle .dark-mode {
   position: relative;
   width: 100%;
@@ -66,6 +70,7 @@ const onThemeChange = () => {
   overflow: hidden;
   border-radius: 50%;
 }
+
 .mode-toggle .toggle .dark-mode:before {
   content: "";
   position: relative;
@@ -73,7 +78,6 @@ const onThemeChange = () => {
   height: 100%;
   left: 50%;
   float: left;
-  background-color: #a5abba;
   transition: border-radius 0.5s ease, width 0.5s ease, height 0.5s ease,
     left 0.5s ease, transform 0.5s ease;
 }

@@ -11,7 +11,7 @@
             }
         },
         {
-            "files": ["*.html", "legacy/**/*.js", ".vue", "*.ts"],
+            "files": ["*.html", "legacy/**/*.js", "*.ts"],
             "options": {
                 "tabWidth": 4
             }

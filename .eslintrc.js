@@ -6,6 +6,8 @@ module.exports = {
     env: {
         browser: true,
         es2021: true,
+        "vue/setup-compiler-macros": true,
+        node: true,
     },
     extends: [
         "plugin:vue/vue3-essential",
@@ -17,10 +19,6 @@ module.exports = {
         "@vue/eslint-config-typescript/recommended",
         "@vue/eslint-config-prettier",
     ],
-    env: {
-        "vue/setup-compiler-macros": true,
-        node: true,
-    },
     parserOptions: {
         parser: "@typescript-eslint/parser",
         ecmaVersion: 2020,
@@ -60,16 +58,14 @@ module.exports = {
         "prettier/prettier": [
             "warn",
             {
-                singleQuote: true,
                 semi: false,
-                trailingComma: "none",
+                trailingComma: "es5",
             },
         ],
 
         // disable rules from base configurations
         "for-direction": "off",
         "init-declarations": "off",
-        "no-console": "off",
         "no-inline-comments": "off",
     },
     overrides: [

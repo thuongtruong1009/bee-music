@@ -2,4 +2,3 @@
     "installDependencies": true,
     "startCommand": "npm run dev"
 }
-//https://stackblitz.com/github/thuongtruong1009/bee-music/tree/main/?file=.stackblitzrc

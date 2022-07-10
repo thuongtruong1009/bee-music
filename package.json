@@ -13,8 +13,11 @@
         "test:e2e:ci": "start-server-and-test preview http://127.0.0.1:5050/ 'cypress run'",
         "typecheck": "vue-tsc --noEmit",
         "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
-        "format-watch": "onchange \"**/*\" -- prettier --write --ignore-unknown {{changed}}",
-        "format-check": "prettier --check ."
+        "prettier-watch": "onchange \"**/*\" -- prettier --write --ignore-unknown {{changed}}",
+        "format-all": "npm prettier --write .",
+        "format-check": "npx prettier --check .",
+        "prepare": "husky install",
+        "pre-commit": "lint-staged"
     },
     "dependencies": {
         "pinia": "^2.0.11",
@@ -35,9 +38,11 @@
         "eslint-config-prettier": "^8.5.0",
         "eslint-plugin-cypress": "^2.12.1",
         "eslint-plugin-vue": "^8.2.0",
+        "husky": "^8.0.1",
         "istanbul-instrumenter-loader": "^3.0.1",
         "jsdom": "^19.0.0",
         "karma-coverage-istanbul-reporter": "^3.0.3",
+        "lint-staged": "^13.0.3",
         "prettier": "2.7.1",
         "start-server-and-test": "^1.14.0",
         "typescript": "~4.5.5",
@@ -47,5 +52,16 @@
         "vitest": "^0.2.5",
         "vue-tsc": "^0.31.1",
         "windicss": "^3.4.3"
+    },
+    "lint-staged": {
+        "**/*": "prettier --write --ignore-unknown"
+    },
+    "husky": {
+        "hooks": {
+            "applypatch-msg": "echo \"[Husky] applypatch-msg\"",
+            "pre-applypatch": "echo \"[Husky] pre-applypatch\"",
+            "post-applypatch": "echo \"[Husky] post-applypatch\"",
+            "pre-commit": "prettier --write . && git add -a ."
+        }
     }
 }

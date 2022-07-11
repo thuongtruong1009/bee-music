@@ -2,25 +2,10 @@
 import CLeft from "../components/CLeft.vue"
 import { ref, onMounted } from "vue"
 import { useCounterStore } from "../stores/counter"
+import { formatNumber } from "../utils/format"
 import CInputRange from "./CInputRange.vue"
 
 const main = useCounterStore()
-
-const numberFormatter = (n) => {
-    return (n < 10 ? "0" : "") + n
-}
-
-const isLeftToggleActive = ref(false)
-const onLeftToggleClick = () => {
-    isLeftToggleActive.value = !isLeftToggleActive.value
-}
-
-const isHeart = ref(false)
-const onHeart = () => {
-    isHeart.value = !isHeart.value
-}
-const currentVolume = ref(30)
-const currentTime = ref(0)
 
 const isLoading = ref(true)
 onMounted(async () => {
@@ -33,15 +18,27 @@ onMounted(async () => {
             isLoading.value = false
         })
 })
+
+const isLeftToggleActive = ref(false)
+const onLeftToggleClick = () => {
+    isLeftToggleActive.value = !isLeftToggleActive.value
+}
+
+const isHeart = ref(false)
+const onHeart = () => {
+    isHeart.value = !isHeart.value
+}
+const currentVolume = ref(30)
+const currentTime = ref(10)
 const isPlaying = ref(false)
 const onPlaySong = () => {
     isPlaying.value = !isPlaying.value
 }
 
-const srcSong = ref("")
+const song = ref("")
 const loadSound = (sound) => {
     if (sound) {
-        srcSong.value = String(sound)
+        song.value = String(sound)
         isPlaying.value = true
 
         // this.$refs.audioPlayer.play();
@@ -159,7 +156,7 @@ const loadSound = (sound) => {
                     class="grid grid-cols-12 items-center p-3 hover:(pl-4 bg-white shadow-lg shadow-gray-300 text-gray-700 font-medium) dark:hover:bg-$dark_input duration-200 rounded-md cursor-pointer text-gray-500 dark:text-gray-400 dark:hover:(text-gray-200 shadow-gray-800) text-xs"
                     @click="loadSound(`${main.results[i]['music']}`)"
                 >
-                    <p>{{ numberFormatter(index) }}</p>
+                    <p>{{ formatNumber(index) }}</p>
                     <p class="col-span-5">{{ main.results[i]["title"] }}</p>
                     <p class="col-span-5">{{ main.results[i]["creator"] }}</p>
                     <p>{{ main.counter }}</p>
@@ -259,7 +256,7 @@ const loadSound = (sound) => {
                     </div>
                     <div class="slidecontainer1 relative">
                         <span
-                            class="w-[90%] h-0.25 bg-red-500 absolute top-1/2 left-1"
+                            class="w-[90%] h-0.5 bg-red-500 absolute top-1/2 left-1"
                         ></span>
                         <input
                             id="myRange1"
@@ -279,10 +276,10 @@ const loadSound = (sound) => {
                 class="play-seekbar flex justify-between items-center text-gray-500 text-sm"
             >
                 <div class="timer__left">
-                    {{ currentTime }}
+                    {{ song.currentTime }}
                 </div>
                 <CInputRange />
-                <audio ref="audioPlayer" :src="srcSong" autoplay></audio>
+                <audio ref="audioPlayer" :src="song" autoplay></audio>
                 <div class="timer__right">3.00</div>
             </div>
         </div>
@@ -318,7 +315,6 @@ i {
     -webkit-appearance: none;
     width: 100%;
     height: 100%;
-    outline: none;
     opacity: 0.7;
     -webkit-transition: 0.2s;
     transition: opacity 0.2s;
@@ -327,12 +323,18 @@ i {
 .slider1::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
-    width: 1.4rem;
+    width: 0.6rem;
+    background-color: #fff;
+    border: 0.1rem solid #000;
+    border-radius: 50%;
+    height: 0.6rem;
+    cursor: pointer;
+    /* width: 1.4rem;
     height: 1.4rem;
     border: 0;
     background: url("https://img.icons8.com/material-two-tone/24/000000/circled.png");
     cursor: pointer;
-    transform: scale(0.55);
+    transform: scale(0.55); */
 }
 
 .slider1::-moz-range-thumb {

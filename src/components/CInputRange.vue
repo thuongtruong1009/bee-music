@@ -1,38 +1,17 @@
 <script setup>
-import { onMounted, ref, watchEffect, computed } from "vue"
+import { ref } from "vue"
 
 const inputValue = ref(0)
-const rangeBackground = ref("background: red")
-const onChange = watchEffect(() => {
+const rangeBackground = ref("")
+const onChange = (e) => {
+    inputValue.value = e.target.value
     let buf = (100 - inputValue.value) / 4 + parseInt(inputValue.value)
     rangeBackground.value = `background: linear-gradient(to right, #8D53EC 0%, #8D53EC ${inputValue.value}%, #777 ${inputValue.value}%, #777 ${buf}%, #444 ${buf}%, #444 100%)`
-})
-
-onMounted(() => {
-    // $(function () {
-    //     $(".wrap").addClass("loaded")
-    //     $(".range").bind("change mousemove", function () {
-    //         var val = $(this).val()
-    //         var buf = (100 - val) / 4 + parseInt(val)
-    //         $(this).css(
-    //             "background",
-    //             "linear-gradient(to right, #8D53EC 0%, #8D53EC " +
-    //                 val +
-    //                 "%, #777 " +
-    //                 val +
-    //                 "%, #777 " +
-    //                 buf +
-    //                 "%, #444 " +
-    //                 buf +
-    //                 "%, #444 100%)"
-    //         )
-    //     })
-    // })
-})
+}
 </script>
 
 <template>
-    <div class="wrap loaded w-full px-2 pb-4">
+    <div class="wrap w-full px-2 pb-4">
         <input
             v-model="inputValue"
             type="range"
@@ -40,7 +19,7 @@ onMounted(() => {
             max="100"
             class="range"
             :style="rangeBackground"
-            @change="onChange"
+            @change="onChange($event)"
         />
     </div>
 </template>
@@ -50,11 +29,11 @@ onMounted(() => {
     -webkit-appearance: none;
     background: linear-gradient(
         to right,
-        #cc181e 0%,
-        #cc181e 50%,
+        #777 0%,
         #777 50%,
         #777 62.5%,
-        #444 62.5%,
+        #777 32.5%,
+        #444 30.5%,
         #444 100%
     );
     cursor: pointer;
@@ -85,8 +64,8 @@ onMounted(() => {
     height: 16px;
 }
 
-.loaded .range,
-.loaded .range::-webkit-slider-thumb {
+.wrap .range,
+.wrap .range::-webkit-slider-thumb {
     transition: 0.1s ease-in;
 }
 </style>

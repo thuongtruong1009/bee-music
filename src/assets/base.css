@@ -1,40 +1,52 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  /* overflow-x: hidden; */
-  user-select: none;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* overflow-x: hidden; */
+    user-select: none;
 }
 
 body {
-  min-height: 100vh;
-  transition: color 0.5s, background-color 0.5s;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    transition: color 0.5s, background-color 0.5s;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
-#app{
-  font-family: 'Poppins', sans-serif;
-  /* width: 100vw;
+#app {
+    font-family: "Poppins", sans-serif;
+    /* width: 100vw;
   height: 100vh; */
 }
-a{
-  text-decoration: none;
-  color: inherit;
+/* ::-webkit-slider-thumb{
+    appearance: none;
+    width:.8rem;
+    background-color: #fff;
+    border:.2rem solid #000;
+    border-radius: 50%;
+    height:.8rem;
+} */
+a {
+    text-decoration: none;
+    color: inherit;
 }
-li{
-  list-style: none;
+li {
+    list-style: none;
+}
+button,
+input {
+    outline: none;
 }
 ::-webkit-scrollbar {
-  width: 2px;
-  height: 2px;
+    width: 2px;
+    height: 2px;
 }
 ::-webkit-scrollbar,
 ::-webkit-scrollbar-track {
-  background: transparent;
+    background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: #dbdbdb;
+    background: #dbdbdb;
 }

@@ -1,28 +1,33 @@
 <script setup>
-import { onMounted, ref, watchEffect } from "vue"
+import { onMounted, ref, watchEffect, computed } from "vue"
 
-const inputValue = ref(10)
+const inputValue = ref(0)
+const rangeBackground = ref("background: red")
+const onChange = watchEffect(() => {
+    let buf = (100 - inputValue.value) / 4 + parseInt(inputValue.value)
+    rangeBackground.value = `background: linear-gradient(to right, #8D53EC 0%, #8D53EC ${inputValue.value}%, #777 ${inputValue.value}%, #777 ${buf}%, #444 ${buf}%, #444 100%)`
+})
 
 onMounted(() => {
-    $(function () {
-        $(".wrap").addClass("loaded")
-        $(".range").bind("change mousemove", function () {
-            var val = $(this).val()
-            var buf = (100 - val) / 4 + parseInt(val)
-            $(this).css(
-                "background",
-                "linear-gradient(to right, #8D53EC 0%, #8D53EC " +
-                    val +
-                    "%, #777 " +
-                    val +
-                    "%, #777 " +
-                    buf +
-                    "%, #444 " +
-                    buf +
-                    "%, #444 100%)"
-            )
-        })
-    })
+    // $(function () {
+    //     $(".wrap").addClass("loaded")
+    //     $(".range").bind("change mousemove", function () {
+    //         var val = $(this).val()
+    //         var buf = (100 - val) / 4 + parseInt(val)
+    //         $(this).css(
+    //             "background",
+    //             "linear-gradient(to right, #8D53EC 0%, #8D53EC " +
+    //                 val +
+    //                 "%, #777 " +
+    //                 val +
+    //                 "%, #777 " +
+    //                 buf +
+    //                 "%, #444 " +
+    //                 buf +
+    //                 "%, #444 100%)"
+    //         )
+    //     })
+    // })
 })
 </script>
 
@@ -34,6 +39,8 @@ onMounted(() => {
             min="1"
             max="100"
             class="range"
+            :style="rangeBackground"
+            @change="onChange"
         />
     </div>
 </template>

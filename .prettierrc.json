@@ -1,0 +1,20 @@
+{
+    "trailingComma": "es5",
+    "tabWidth": 4,
+    "semi": false,
+    "singleQuote": false,
+    "overrides": [
+        {
+            "files": "*.test.js",
+            "options": {
+                "semi": true
+            }
+        },
+        {
+            "files": ["*.html", "legacy/**/*.js", "*.ts"],
+            "options": {
+                "tabWidth": 4
+            }
+        }
+    ]
+}

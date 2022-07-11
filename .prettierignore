@@ -1,0 +1,5 @@
+build
+coverage
+REDME.md
+node_modules/*
+cypress/*
